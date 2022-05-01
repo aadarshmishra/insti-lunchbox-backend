@@ -1,6 +1,7 @@
 package com.iiitb.instilunchbox.Service;
 
 import com.iiitb.instilunchbox.Model.Institute;
+import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Repository.InstituteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,11 @@ import java.util.Optional;
 @Service
 public class InstituteService {
 
-    private final InstituteRepository instituteRepository;
     @Autowired
-    public InstituteService(InstituteRepository instituteRepository) {
-        this.instituteRepository = instituteRepository;
-    }
+    private UserService userService;
+
+    @Autowired
+    private InstituteRepository instituteRepository;
 
     public Institute addNewInstitute(Institute institute){
         Optional<Institute> instituteOptional = instituteRepository.findInstituteByEmail(institute.getEmail());
