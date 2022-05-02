@@ -6,6 +6,7 @@ import com.iiitb.instilunchbox.Repository.NGORepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +38,9 @@ public class NGOService {
             throw new IllegalStateException("NGO Not Found.");
         }
         return ngoOptional.get();
+    }
+
+    public List<NGO> getAllNGO() {
+        return ngoRepository.findAll();
     }
 }
