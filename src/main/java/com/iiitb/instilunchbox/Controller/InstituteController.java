@@ -20,17 +20,17 @@ public class InstituteController {
         this.instituteService = instituteService;
     }
 
-    @PostMapping("")
+    @PostMapping("/add")
     public ResponseEntity<Institute> addNewInstitute(@RequestBody Institute institute) {
         return new ResponseEntity<>(instituteService.addNewInstitute(institute), HttpStatus.CREATED);
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public ResponseEntity<List<Institute>> getAllInstitutes() {
         return new ResponseEntity<List<Institute>>(instituteService.getAllInstitutes(),HttpStatus.OK);
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/{email}")
     public ResponseEntity<Institute> getInsitute(@PathVariable String email) {
         return new ResponseEntity<Institute>(instituteService.getInstituteByEmail(email),HttpStatus.OK);
     }
