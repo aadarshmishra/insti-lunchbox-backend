@@ -1,11 +1,14 @@
 package com.iiitb.instilunchbox.Controller;
 
 import com.iiitb.instilunchbox.Model.Institute;
+import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Service.InstituteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/institute")
@@ -20,6 +23,11 @@ public class InstituteController {
     @PostMapping("")
     public ResponseEntity<Institute> addNewInstitute(@RequestBody Institute institute) {
         return new ResponseEntity<>(instituteService.addNewInstitute(institute), HttpStatus.CREATED);
+    }
+
+    @GetMapping("get")
+    public ResponseEntity<List<Institute>> getAllInstitutes() {
+        return new ResponseEntity<List<Institute>>(instituteService.getAllInstitutes(),HttpStatus.OK);
     }
 
     @GetMapping("{email}")
