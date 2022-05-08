@@ -4,8 +4,10 @@ import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Repository.InstituteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -47,5 +49,9 @@ public class InstituteService {
         System.out.println(institute.getId());
         return instituteRepository.save(institute);
     }
-
+    @Transactional
+    public void deleteInstituteById(Long id) {
+        instituteRepository.removeInstituteById(id);
+        return ;
+    }
 }

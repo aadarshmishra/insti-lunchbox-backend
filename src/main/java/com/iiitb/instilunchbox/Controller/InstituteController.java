@@ -41,4 +41,11 @@ public class InstituteController {
         Institute institute1 = instituteService.updateInstitute(institute);
         return new ResponseEntity<>(institute1, HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteInstituteById(@PathVariable Long id){
+        instituteService.deleteInstituteById(id);
+        String res = "User deleted";
+        return new ResponseEntity<String>(res, HttpStatus.OK);
+    }
 }

@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface InstituteRepository extends JpaRepository<Institute,Long> {
     Optional<Institute> findInstituteByEmail(String email);
 
+
+    void removeInstituteById(Long id);
 }
