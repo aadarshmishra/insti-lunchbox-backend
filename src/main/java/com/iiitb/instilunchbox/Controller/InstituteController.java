@@ -34,4 +34,11 @@ public class InstituteController {
     public ResponseEntity<Institute> getInsitute(@PathVariable String email) {
         return new ResponseEntity<Institute>(instituteService.getInstituteByEmail(email),HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public  ResponseEntity<Institute> updateInstitute(@RequestBody Institute institute){
+        System.out.println(institute.getId());
+        Institute institute1 = instituteService.updateInstitute(institute);
+        return new ResponseEntity<>(institute1, HttpStatus.OK);
+    }
 }

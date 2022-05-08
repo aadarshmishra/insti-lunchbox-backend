@@ -12,7 +12,7 @@ public class Institute {
     private Integer contact;
     private String email;
     private Integer status = 0;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Institute() {

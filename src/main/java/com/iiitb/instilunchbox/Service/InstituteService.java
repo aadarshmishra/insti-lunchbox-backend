@@ -42,4 +42,10 @@ public class InstituteService {
     public List<Institute> getAllInstitutes() {
         return instituteRepository.findAll();
     }
+
+    public Institute updateInstitute(Institute institute) {
+        System.out.println(institute.getId());
+        return instituteRepository.save(institute);
+    }
+
 }
