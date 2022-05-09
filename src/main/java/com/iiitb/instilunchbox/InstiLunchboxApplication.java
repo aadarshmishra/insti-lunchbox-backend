@@ -1,6 +1,8 @@
 package com.iiitb.instilunchbox;
 
+import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.User;
+import com.iiitb.instilunchbox.Repository.InstituteRepository;
 import com.iiitb.instilunchbox.Repository.UserRepository;
 import com.iiitb.instilunchbox.Service.InstituteService;
 import com.iiitb.instilunchbox.Service.UserService;
@@ -23,9 +25,11 @@ public class InstiLunchboxApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initialData(UserRepository userRepository) {
+	public CommandLineRunner initialData(UserRepository userRepository, InstituteService instituteService) {
 		return args -> {
-			userRepository.save(new User("admin@gmail.com","admin","admin"));
+			if (!userRepository.existsById(1L)) {
+				userRepository.save(new User("admin@gmail.com", "admin", "admin"));
+			}
 		};
 	}
 
