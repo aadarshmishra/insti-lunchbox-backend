@@ -17,7 +17,7 @@ public class NGOController {
     @Autowired
     private NGOService ngoService;
 
-    @PostMapping("")
+    @PostMapping("add")
     public ResponseEntity<NGO> addNewNGO(@RequestBody NGO ngo) {
         return new ResponseEntity<NGO>(ngoService.addNewNGO(ngo), HttpStatus.CREATED);
     }
