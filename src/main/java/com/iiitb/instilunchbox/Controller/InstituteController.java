@@ -30,6 +30,12 @@ public class InstituteController {
         return new ResponseEntity<List<Institute>>(instituteService.getAllInstitutes(),HttpStatus.OK);
     }
 
+    @GetMapping("/getByStatus")
+    public ResponseEntity<List<Institute>> getAllInstiUsersByStatus(){
+        List<Institute> newInstiUser = instituteService.findAllInstiUserByStatus();
+        return new ResponseEntity<>(newInstiUser, HttpStatus.OK);
+    }
+
     @GetMapping("/{email}")
     public ResponseEntity<Institute> getInsitute(@PathVariable String email) {
         return new ResponseEntity<Institute>(instituteService.getInstituteByEmail(email),HttpStatus.OK);
@@ -40,6 +46,20 @@ public class InstituteController {
         System.out.println(institute.getId());
         Institute institute1 = instituteService.updateInstitute(institute);
         return new ResponseEntity<>(institute1, HttpStatus.OK);
+    }
+
+    @PutMapping("/updateStatus/{id}/{status}")
+    public ResponseEntity<Integer> updateInstituteStatus(@PathVariable("id") Long id, @PathVariable("status") Integer status){
+
+        System.out.println(id);
+        System.out.println(status);
+        instituteService.updateInstituteUserByStatus(id, status);
+        if(status == 1){
+
+            return new ResponseEntity<Integer>(1, HttpStatus.OK);
+        }
+        else
+             return new ResponseEntity<Integer>(0, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

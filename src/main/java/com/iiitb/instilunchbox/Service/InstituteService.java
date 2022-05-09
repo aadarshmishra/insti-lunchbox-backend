@@ -54,4 +54,12 @@ public class InstituteService {
         instituteRepository.removeInstituteById(id);
         return ;
     }
+
+    public Integer updateInstituteUserByStatus(Long id, Integer status){
+        return instituteRepository.updateInstituteStatusById(id, status);
+    }
+
+    public List<Institute> findAllInstiUserByStatus(){
+        return (List<Institute>) instituteRepository.findAllInstiUsersByStatus();
+    }
 }

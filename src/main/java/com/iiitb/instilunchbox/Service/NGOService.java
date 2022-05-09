@@ -5,6 +5,8 @@ import com.iiitb.instilunchbox.Model.NGO;
 import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Repository.NGORepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -53,5 +55,13 @@ public class NGOService {
     public void deleteNGOById(Long id) {
         ngoRepository.removeNGOById(id);
         return ;
+    }
+
+    public Integer updateNgoUserByStatus(Long id, Integer status) {
+        return ngoRepository.updateNgoUserStatusById(id, status);
+    }
+
+    public List<NGO> findAllNgoUserByStatus(){
+        return (List<NGO>) ngoRepository.findAllNgoUsersByStatus();
     }
 }
