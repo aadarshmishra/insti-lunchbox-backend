@@ -91,4 +91,17 @@ public class Institute {
     public void setContact(Integer contact) {
         this.contact = contact;
     }
+
+    @Override
+    public String toString() {
+        return "Institute{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", contact=" + contact +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", user=" + user +
+                '}';
+    }
 }

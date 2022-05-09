@@ -28,6 +28,11 @@ public class FoodItemController {
         return new ResponseEntity<List<FoodItem>>(foodItemService.getAllFoodItem(),HttpStatus.OK);
     }
 
+    @GetMapping("/getNGONames")
+    public ResponseEntity<List<String>> getAllNGONames() {
+        return new ResponseEntity<List<String>>(foodItemService.getAllNGONameFromFooditems(),HttpStatus.OK);
+    }
+
     @PutMapping("/put")
     public ResponseEntity<FoodItem> updateFoodItem(@RequestBody FoodItem foodItem) {
         return new ResponseEntity<FoodItem>(foodItemService.updateFooditem(foodItem),HttpStatus.OK);

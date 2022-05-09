@@ -2,11 +2,14 @@ package com.iiitb.instilunchbox.Service;
 
 import com.iiitb.instilunchbox.Model.FoodItem;
 import com.iiitb.instilunchbox.Model.Lunchbox;
+import com.iiitb.instilunchbox.Model.NGO;
 import com.iiitb.instilunchbox.Repository.FoodItemRepository;
 import com.iiitb.instilunchbox.Repository.LunchboxRepository;
+import com.iiitb.instilunchbox.Repository.NGORepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +23,7 @@ public class FoodItemService {
     private LunchboxService lunchboxService;
 
     @Autowired
-    private LunchboxRepository lunchboxRepository;
-
+    private NGOService ngoService;
 
     public FoodItem addFoodItem(FoodItem foodItem) {
         Optional<FoodItem> optionalFoodItem = foodItemRepository.getFoodItemByFname((foodItem.getFname()));
@@ -36,6 +38,21 @@ public class FoodItemService {
     public FoodItem updateFooditem(FoodItem foodItem) {
 //        FoodItem foodItem1 = foodItemRepository.getById(id);
         return foodItemRepository.save(foodItem);
+    }
+
+    public List<String> getAllNGONameFromFooditems() {
+        List<FoodItem> foodItems = foodItemRepository.findAll();
+        System.out.println(foodItems.size());
+        List<String> NGONames = new ArrayList<>();
+        for (FoodItem fooditem : foodItems) {
+            String ngoEmail = fooditem.getNgoemail();
+            if (ngoEmail.length() > 0) {
+                String ngoName = ngoService.getNGOByEmail(ngoEmail).getName();
+                NGONames.add(ngoName);
+            }
+            else NGONames.add("");
+        }
+        return NGONames;
     }
 
     public List<FoodItem> getAllFoodItem() {
