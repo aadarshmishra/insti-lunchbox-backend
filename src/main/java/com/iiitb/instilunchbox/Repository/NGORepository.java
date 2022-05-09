@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface NGORepository extends JpaRepository<NGO,Long> {
     Optional<NGO> findNGOByEmail(String email);
+
+    void removeNGOById(Long id);
 }

@@ -1,5 +1,6 @@
 package com.iiitb.instilunchbox.Controller;
 
+import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.NGO;
 import com.iiitb.instilunchbox.Service.NGOService;
 import org.hibernate.usertype.LoggableUserType;
@@ -30,5 +31,19 @@ public class NGOController {
     @GetMapping("{email}")
     public NGO getNGO(@PathVariable String email) {
         return ngoService.getNGOByEmail(email);
+    }
+
+    @PutMapping("/update")
+    public  ResponseEntity<NGO> updateNGO(@RequestBody NGO ngo){
+        System.out.println(ngo.getId());
+        NGO newNgo = ngoService.updateNGO(ngo);
+        return new ResponseEntity<>(newNgo, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteInstituteById(@PathVariable Long id){
+        ngoService.deleteNGOById(id);
+        String res = "User deleted";
+        return new ResponseEntity<String>(res, HttpStatus.OK);
     }
 }
