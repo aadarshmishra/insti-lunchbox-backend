@@ -2,10 +2,7 @@ package com.iiitb.instilunchbox.Service;
 
 import com.iiitb.instilunchbox.Model.FoodItem;
 import com.iiitb.instilunchbox.Model.Lunchbox;
-import com.iiitb.instilunchbox.Model.NGO;
 import com.iiitb.instilunchbox.Repository.FoodItemRepository;
-import com.iiitb.instilunchbox.Repository.LunchboxRepository;
-import com.iiitb.instilunchbox.Repository.NGORepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +39,6 @@ public class FoodItemService {
 
     public List<String> getAllNGONameFromFooditems() {
         List<FoodItem> foodItems = foodItemRepository.findAll();
-        System.out.println(foodItems.size());
         List<String> NGONames = new ArrayList<>();
         for (FoodItem fooditem : foodItems) {
             String ngoEmail = fooditem.getNgoemail();
