@@ -25,10 +25,5 @@
 
     - name: deploy insti-lunchbox-backend docker container
       docker_container:
-        image: aadarsh96/insti-lunchbox-backend:latest
-        name: insti-lunchbox-backend
-        state: started
-        auto_remove: true
-        ports:
-          - "8080:8080"
+        sh: "docker run -d -p 9090:9090 --name insti-lunchbox-backend aadarsh96/insti-lunchbox-backend:latest"
 ...
