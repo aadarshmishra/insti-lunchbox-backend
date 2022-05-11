@@ -25,10 +25,10 @@ public class InstiLunchboxApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initialData(UserRepository userRepository, InstituteService instituteService) {
+	public CommandLineRunner initialData(UserRepository userRepository, UserService userService) {
 		return args -> {
 			if (!userRepository.existsById(1L)) {
-				userRepository.save(new User("admin@gmail.com", "admin", "admin"));
+				userService.addNewUser(new User("admin@gmail.com", "admin", "admin"));
 			}
 		};
 	}

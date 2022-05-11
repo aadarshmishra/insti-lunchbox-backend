@@ -43,7 +43,6 @@ public class InstituteController {
 
     @PutMapping("/update")
     public  ResponseEntity<Institute> updateInstitute(@RequestBody Institute institute){
-        System.out.println(institute.getId());
         Institute institute1 = instituteService.updateInstitute(institute);
         return new ResponseEntity<>(institute1, HttpStatus.OK);
     }

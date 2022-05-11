@@ -49,6 +49,9 @@ public class NGOService {
     }
 
     public NGO updateNGO(NGO ngo) {
+        User user = ngo.getUser();
+        user.setPassword(userService.getEncodedPassoword(ngo.getUser().getPassword()));
+        user.setRole("ngo");
         return ngoRepository.save(ngo);
     }
     @Transactional
