@@ -23,9 +23,9 @@ pipeline {
                  sh 'docker system prune -a --volumes -f'
             }
         }
-        stage('START Containers') {
+        stage('Build Docker-Compose Image') {
             steps {
-                sh 'docker-compose up -d --build'
+                sh 'docker-compose build'
             }
         }
 
