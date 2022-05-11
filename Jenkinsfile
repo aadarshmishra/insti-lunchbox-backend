@@ -25,7 +25,7 @@ pipeline {
         }
         stage('START Containers') {
             steps {
-                sh 'docker-compose up -d --no-colo --wait'
+                sh 'docker-compose up -d'
                 sh 'docker compose ps'
             }
         }
