@@ -1,5 +1,3 @@
-FROM maven:3.8.2-jdk-8
-WORKDIR /insti-lunchbox-backend
-COPY . .
-RUN mvn clean install
-CMD mvn spring-boot:run
+FROM openjdk:11
+ADD  target/insti-lunchbox-0.0.1-SNAPSHOT.jar insti-lunchbox-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","insti-lunchbox-0.0.1-SNAPSHOT.jar"]

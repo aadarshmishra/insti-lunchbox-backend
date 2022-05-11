@@ -25,20 +25,19 @@ pipeline {
         }
         stage('START Containers') {
             steps {
-                sh 'docker-compose up -d'
-                sh 'docker compose ps'
+                sh 'docker-compose up -d --build'
             }
         }
 
-//         stage('Push Docker Image') {
-//             steps {
-//                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-//                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-//                     sh "docker tag insti-lunchbox-frontend aadarsh96/insti-lunchbox-frontend:latest"
-//                     sh 'docker push aadarsh96/insti-lunchbox-frontend:latest'
-//                 }
-//             }
-//         }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                    sh "docker tag insti-lunchbox_app aadarsh96/insti-lunchbox-backend:latest"
+                    sh 'docker push aadarsh96/insti-lunchbox-backend:latest'
+                }
+            }
+        }
 //         stage('Ansible Pull and Run Docker Image') {
 //             steps {
 //                 ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, inventory: 'inventory', playbook: 'deploy-img.yml', sudoUser: null
