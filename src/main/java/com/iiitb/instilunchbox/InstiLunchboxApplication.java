@@ -1,6 +1,8 @@
 package com.iiitb.instilunchbox;
 
+import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.User;
+import com.iiitb.instilunchbox.Repository.InstituteRepository;
 import com.iiitb.instilunchbox.Repository.UserRepository;
 import com.iiitb.instilunchbox.Service.InstituteService;
 import com.iiitb.instilunchbox.Service.UserService;
@@ -23,9 +25,11 @@ public class InstiLunchboxApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initialData(UserRepository userRepository) {
+	public CommandLineRunner initialData(UserRepository userRepository, InstituteService instituteService) {
 		return args -> {
-			userRepository.save(new User("admin@gmail.com","admin","admin"));
+			if (!userRepository.existsById(1L)) {
+				userRepository.save(new User("admin@gmail.com", "admin", "admin"));
+			}
 		};
 	}
 
@@ -36,7 +40,7 @@ public class InstiLunchboxApplication {
 		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Authorization", "Origin, Accept", "X-Requested-With",
-				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
+				"Access-Control-Request-Method", "Access-Control-Request-Headers", "No-Auth"));
 		corsConfiguration.setExposedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization",
 				"Access-Control-Allow-Origin", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
