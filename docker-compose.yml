@@ -1,5 +1,12 @@
 version: "3.8"
 services:
+  clientnode:
+    image: aadarsh96/insti-lunchbox-frontend:latest
+    ports:
+      - "3211:80"
+    networks:
+      net_ubuntu:
+        ipv4_address: 172.28.1.5
   mysqldb:
     platform: linux/x86_64
     image: mysql:5.7
@@ -12,6 +19,9 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
+    networks:
+      net_ubuntu:
+        ipv4_address: 172.28.1.6
   app:
     depends_on:
       - mysqldb
@@ -33,5 +43,16 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
+    networks:
+      net_ubuntu:
+        ipv4_address: 172.28.1.7
+
 volumes:
   db:
+
+networks:
+  net_ubuntu:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.1.0/24
