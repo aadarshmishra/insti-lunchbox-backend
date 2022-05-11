@@ -33,6 +33,11 @@ public class FoodItemController {
         return new ResponseEntity<List<String>>(foodItemService.getAllNGONameFromFooditems(),HttpStatus.OK);
     }
 
+    @GetMapping("/get/{email}")
+    public ResponseEntity<List<FoodItem>> getFooditemOfInsti(@PathVariable String email) {
+        return new ResponseEntity<List<FoodItem>>(foodItemService.getFooditemForInsti(email),HttpStatus.OK);
+    }
+
     @PutMapping("/put")
     public ResponseEntity<FoodItem> updateFoodItem(@RequestBody FoodItem foodItem) {
         return new ResponseEntity<FoodItem>(foodItemService.updateFooditem(foodItem),HttpStatus.OK);
