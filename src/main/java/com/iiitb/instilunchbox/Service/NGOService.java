@@ -1,11 +1,15 @@
 package com.iiitb.instilunchbox.Service;
 
+import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.NGO;
 import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Repository.NGORepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,5 +46,22 @@ public class NGOService {
 
     public List<NGO> getAllNGO() {
         return ngoRepository.findAll();
+    }
+
+    public NGO updateNGO(NGO ngo) {
+        return ngoRepository.save(ngo);
+    }
+    @Transactional
+    public void deleteNGOById(Long id) {
+        ngoRepository.removeNGOById(id);
+        return ;
+    }
+
+    public Integer updateNgoUserByStatus(Long id, Integer status) {
+        return ngoRepository.updateNgoUserStatusById(id, status);
+    }
+
+    public List<NGO> findAllNgoUserByStatus(){
+        return (List<NGO>) ngoRepository.findAllNgoUsersByStatus();
     }
 }

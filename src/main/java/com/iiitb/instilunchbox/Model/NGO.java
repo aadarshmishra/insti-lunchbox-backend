@@ -13,7 +13,7 @@ public class NGO {
     private String contact;
     private String email;
     private Integer status = 0;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
 

@@ -9,16 +9,16 @@ public class Institute {
     private Long id;
     private String name;
     private String address;
-    private Integer contact;
+    private String contact;
     private String email;
     private Integer status = 0;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Institute() {
     }
 
-    public Institute(Long id, String name, String address, Integer contact, String email, Integer status, User user) {
+    public Institute(Long id, String name, String address, String contact, String email, Integer status, User user) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -28,7 +28,7 @@ public class Institute {
         this.user = user;
     }
 
-    public Institute(String name, String address, Integer contact, String email, Integer status, User user) {
+    public Institute(String name, String address, String contact, String email, Integer status, User user) {
         this.name = name;
         this.address = address;
         this.contact = contact;
@@ -84,11 +84,11 @@ public class Institute {
         this.user = user;
     }
 
-    public Integer getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 
