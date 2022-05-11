@@ -54,4 +54,8 @@ public class FoodItemService {
     public List<FoodItem> getAllFoodItem() {
         return foodItemRepository.findAll();
     }
+
+    public List<FoodItem> getFooditemForInsti(String email) {
+        return foodItemRepository.getFoodItemByInstitute(email).get();
+    }
 }
