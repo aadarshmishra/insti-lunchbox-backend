@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                    sh "docker tag insti-lunchbox_app aadarsh96/insti-lunchbox-backend:latest"
+                    sh "docker tag insti-lunchbox-backend_app aadarsh96/insti-lunchbox-backend:latest"
                     sh 'docker push aadarsh96/insti-lunchbox-backend:latest'
                 }
             }
