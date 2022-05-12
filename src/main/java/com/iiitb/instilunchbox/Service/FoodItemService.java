@@ -22,18 +22,23 @@ public class FoodItemService {
     @Autowired
     private NGOService ngoService;
 
+    @Autowired
+    MailSenderService mailSenderService;
+
     public FoodItem addFoodItem(FoodItem foodItem) {
         Optional<FoodItem> optionalFoodItem = foodItemRepository.getFoodItemByFname((foodItem.getFname()));
         if (optionalFoodItem.isPresent()) throw new IllegalStateException("Food Item already present.");
         else {
             Lunchbox lunchbox = foodItem.getLunchbox();
             lunchboxService.addLunchbox(lunchbox);
+            mailSenderService.sendEmailToNgo(foodItem.getLunchbox().getInstitute().getName());
             return foodItemRepository.save(foodItem);
         }
     }
 
     public FoodItem updateFooditem(FoodItem foodItem) {
 //        FoodItem foodItem1 = foodItemRepository.getById(id);
+        mailSenderService.sendEmailToInsti(ngoService.getNGOByEmail(foodItem.getNgoemail()).getName());
         return foodItemRepository.save(foodItem);
     }
 

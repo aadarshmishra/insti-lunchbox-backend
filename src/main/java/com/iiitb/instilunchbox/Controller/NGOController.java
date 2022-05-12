@@ -18,12 +18,12 @@ public class NGOController {
     @Autowired
     private NGOService ngoService;
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public ResponseEntity<NGO> addNewNGO(@RequestBody NGO ngo) {
         return new ResponseEntity<NGO>(ngoService.addNewNGO(ngo), HttpStatus.CREATED);
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public ResponseEntity<List<NGO>> getAllNGO() {
         return new ResponseEntity<List<NGO>>(ngoService.getAllNGO(),HttpStatus.OK);
     }
@@ -34,7 +34,7 @@ public class NGOController {
         return new ResponseEntity<>(newNGOUser, HttpStatus.OK);
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/{email}")
     public NGO getNGO(@PathVariable String email) {
         return ngoService.getNGOByEmail(email);
     }
