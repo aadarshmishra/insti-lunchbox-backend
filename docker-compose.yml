@@ -25,7 +25,9 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: aadarsh96/insti-lunchbox-backend
+    build:
+       dockerfile: Dockerfile
+     container_name: insti-lunchbox-backend
     restart: on-failure
     env_file: ./.env
     ports:
