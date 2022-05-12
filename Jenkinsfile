@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Build Docker-Compose Image') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker build -t insti-lunchbox-backend_app .' 
             }
         }
 
