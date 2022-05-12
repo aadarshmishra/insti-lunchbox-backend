@@ -3,6 +3,8 @@ package com.iiitb.instilunchbox.Controller;
 import com.iiitb.instilunchbox.Model.Institute;
 import com.iiitb.instilunchbox.Model.User;
 import com.iiitb.instilunchbox.Service.InstituteService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,8 @@ import java.util.List;
 public class InstituteController {
     private final InstituteService instituteService;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(InstituteController.class);
+
     @Autowired
     public InstituteController(InstituteService instituteService) {
         this.instituteService = instituteService;
@@ -22,11 +26,13 @@ public class InstituteController {
 
     @PostMapping("/add")
     public ResponseEntity<Institute> addNewInstitute(@RequestBody Institute institute) {
+        LOGGER.info("Institute Added.");
         return new ResponseEntity<>(instituteService.addNewInstitute(institute), HttpStatus.CREATED);
     }
 
     @GetMapping("/get")
     public ResponseEntity<List<Institute>> getAllInstitutes() {
+        LOGGER.info("Get Institute.");
         return new ResponseEntity<List<Institute>>(instituteService.getAllInstitutes(),HttpStatus.OK);
     }
 
@@ -38,6 +44,7 @@ public class InstituteController {
 
     @GetMapping("/{email}")
     public ResponseEntity<Institute> getInsitute(@PathVariable String email) {
+        LOGGER.info("Get Institute.");
         return new ResponseEntity<Institute>(instituteService.getInstituteByEmail(email),HttpStatus.OK);
     }
 

@@ -1,0 +1,23 @@
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  c.i.i.InstiLunchboxApplication                     - Starting InstiLunchboxApplication using Java 11.0.15 on Aadarshs-MacBook-Air.local with PID 14506 (/Users/aadarsh/Documents/Work/IdeaProjects/insti-lunchbox/target/classes started by aadarsh in /Users/aadarsh/Documents/Work/IdeaProjects/insti-lunchbox)
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  c.i.i.InstiLunchboxApplication                     - No active profile set, falling back to 1 default profile: "default"
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 20 ms. Found 5 JPA repository interfaces.
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 9090 (http)
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-9090"]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.62]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 512 ms
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.h.Version                                        - HHH000412: Hibernate ORM core version 5.6.8.Final
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.h.a.c.Version                                    - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Starting...
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Start completed.
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default'
+{yyyy-MMM-dd HH:mm:ss} [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24bdd996, org.springframework.security.web.context.SecurityContextPersistenceFilter@24482a4f, org.springframework.security.web.header.HeaderWriterFilter@46610fc9, org.springframework.web.filter.CorsFilter@445b4594, org.springframework.security.web.authentication.logout.LogoutFilter@6f6c6c70, com.iiitb.instilunchbox.Configuration.JWTRequestFilter@5b028f58, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f2d2f22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59845a40, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f602930, org.springframework.security.web.session.SessionManagementFilter@5a5a973c, org.springframework.security.web.access.ExceptionTranslationFilter@eee26bd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f370472]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-9090"]
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 9090 (http) with context path ''
+{yyyy-MMM-dd HH:mm:ss} [main] INFO  c.i.i.InstiLunchboxApplication                     - Started InstiLunchboxApplication in 1.797 seconds (JVM running for 2.187)

@@ -27,7 +27,7 @@ services:
       - mysqldb
     build:
        dockerfile: Dockerfile
-     container_name: insti-lunchbox-backend
+    container_name: insti-lunchbox-backend
     restart: on-failure
     env_file: ./.env
     ports:
