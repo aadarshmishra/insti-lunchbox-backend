@@ -7,6 +7,9 @@
         name: aadarsh96/insti-lunchbox-backend:latest
         source: pull
 
+    - name: Prune previous Docker Images and container
+      shell: "docker system prune -f"
+      
     - name: deploy insti-lunchbox composed docker container
       shell: "docker compose up -d --build"
 ...
