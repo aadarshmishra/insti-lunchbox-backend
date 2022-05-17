@@ -31,7 +31,8 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword',
+                usernameVariable: 'dockerHubUser')]) {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                     sh "docker tag insti-lunchbox-backend_app aadarsh96/insti-lunchbox-backend:latest"
                     sh 'docker push aadarsh96/insti-lunchbox-backend:latest'
@@ -40,7 +41,8 @@ pipeline {
         }
         stage('Ansible Pull and Run Docker Image') {
             steps {
-                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, inventory: 'inventory', playbook: 'deploy-img.yml', sudoUser: null
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, inventory: 'inventory',
+                playbook: 'deploy-img.yml', sudoUser: null
             }
         }
     }
